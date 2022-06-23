@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">StoryApp</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="must_not_empty">Must be not empty</string>
+    <string name="more_than_character">More than 6 character</string>
+    <string name="not_type_email">Wrong email format (@)</string>
+
+    <string name="image_description">Picture of %1$s</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="dont_have_account">Dont have account?</string>
+    <string name="register">Register</string>
+    <string name="name">Name</string>
+    <string name="enter_name">Enter name</string>
+    <string name="already_have_account">Already have account?</string>
+    <string name="welcome">Welcome %1$s</string>
+    <string name="date">21 Juni 2022</string>
+    <string name="add_story">Adding a story</string>
+    <string name="created_at">Uploaded at %1$s</string>
+    <string name="logout">Logout</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="description">Description</string>
+    <string name="upload">Upload</string>
+    <string name="image">image</string>
+    <string name="detail_story">Detail Story</string>
+    <string name="f">F</string>
+    <string name="choose_photo_first">Choose story first</string>
+</resources>

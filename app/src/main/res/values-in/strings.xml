@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">StoryApp</string>
+    <string name="enter_password">Masukkan Password</string>
+    <string name="enter_email">Masukkan Email</string>
+    <string name="must_not_empty">Tidak boleh kosong</string>
+    <string name="more_than_character">Harus lebih dari 6 karakter</string>
+    <string name="not_type_email">Format email salah (@)</string>
+    <string name="image_description">Gambar %1$s</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="dont_have_account">Belum punya akun? </string>
+    <string name="register">Register</string>
+    <string name="name">Nama</string>
+    <string name="enter_name">Masukkan nama</string>
+    <string name="already_have_account">Sudah punya akun?</string>
+    <string name="welcome">Selamat datang %1$s !</string>
+    <string name="date">21 Juni 2022</string>
+    <string name="add_story">Tambah sebuah story</string>
+    <string name="created_at">Diunggah pada %1$s</string>
+    <string name="logout">Keluar</string>
+    <string name="camera">Kamera</string>
+    <string name="gallery">Galeri</string>
+    <string name="description">Deskripsi</string>
+    <string name="upload">Unggah</string>
+    <string name="image">gambar</string>
+    <string name="detail_story">Detail Story</string>
+    <string name="f">F</string>
+    <string name="choose_photo_first">Pilih story terlebih dahulu</string>
+</resources>
