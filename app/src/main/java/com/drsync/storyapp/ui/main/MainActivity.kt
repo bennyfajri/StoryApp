@@ -24,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         const val INSERT_RESULT = 200
-        const val KEY_INSERT = "Insert"
     }
 
     private lateinit var binding: ActivityMainBinding
@@ -96,17 +95,14 @@ class MainActivity : AppCompatActivity() {
 
     private fun reGetStory() {
         getStories()
-        binding.rvStory.smoothScrollToPosition(0)
+        setupRecyclerData()
     }
 
     private val launcherInsertStory = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
     ){
         if(it.resultCode == INSERT_RESULT){
-            val isSuccess = intent.getBooleanExtra(KEY_INSERT, false)
-            if(isSuccess){
-                reGetStory()
-            }
+            reGetStory()
         }
     }
 

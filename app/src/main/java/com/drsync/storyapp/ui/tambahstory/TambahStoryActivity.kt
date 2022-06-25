@@ -19,7 +19,6 @@ import com.drsync.storyapp.R
 import com.drsync.storyapp.databinding.ActivityTambahStoryBinding
 import com.drsync.storyapp.models.User
 import com.drsync.storyapp.ui.main.MainActivity.Companion.INSERT_RESULT
-import com.drsync.storyapp.ui.main.MainActivity.Companion.KEY_INSERT
 import com.drsync.storyapp.util.Constant
 import com.drsync.storyapp.util.Constant.reduceFileImage
 import com.drsync.storyapp.util.Constant.tokenBearer
@@ -119,7 +118,6 @@ class TambahStoryActivity : AppCompatActivity() {
                 if(!it.error){
                     Toast.makeText(this@TambahStoryActivity, it.message, Toast.LENGTH_SHORT).show()
                     Intent().apply {
-                        putExtra(KEY_INSERT, true)
                         setResult(INSERT_RESULT, this)
                         finish()
                     }
