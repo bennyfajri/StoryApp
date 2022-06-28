@@ -15,6 +15,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
+import androidx.core.widget.doAfterTextChanged
 import com.drsync.storyapp.R
 import com.drsync.storyapp.databinding.ActivityTambahStoryBinding
 import com.drsync.storyapp.models.User
@@ -89,6 +90,11 @@ class InputStoryActivity : AppCompatActivity() {
         }
 
         showLoading()
+        clearErrorDescription()
+    }
+
+    private fun clearErrorDescription() {
+        binding.etDescription.doAfterTextChanged { binding.ilDescription.isErrorEnabled = false }
     }
 
     private fun showLoading() {
