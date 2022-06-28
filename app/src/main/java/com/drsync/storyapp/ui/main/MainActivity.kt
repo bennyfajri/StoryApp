@@ -14,7 +14,7 @@ import com.drsync.storyapp.R
 import com.drsync.storyapp.databinding.ActivityMainBinding
 import com.drsync.storyapp.models.User
 import com.drsync.storyapp.ui.login.LoginActivity
-import com.drsync.storyapp.ui.tambahstory.TambahStoryActivity
+import com.drsync.storyapp.ui.inputstory.InputStoryActivity
 import com.drsync.storyapp.util.Constant.TAG
 import com.drsync.storyapp.util.Constant.tokenBearer
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         getStories()
 
         binding.fabTambah.setOnClickListener {
-            Intent(this@MainActivity, TambahStoryActivity::class.java).also {
+            Intent(this@MainActivity, InputStoryActivity::class.java).also {
                 launcherInsertStory.launch(it)
             }
         }

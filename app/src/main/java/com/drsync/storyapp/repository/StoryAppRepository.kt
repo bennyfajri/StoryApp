@@ -61,7 +61,7 @@ class StoryAppRepository @Inject constructor(
         emit(Resource.error(it.message ?: ""))
     }.flowOn(Dispatchers.IO)
 
-    fun tambahStory(
+    fun inputStory(
         token: String,
         file: MultipartBody.Part,
         description: RequestBody,
@@ -69,7 +69,7 @@ class StoryAppRepository @Inject constructor(
         lon: RequestBody? = null
     ) = flow<Resource<ServerResponse>> {
         emit(Resource.loading())
-        val response = apiService.tambahStory(token, file, description, lat, lon)
+        val response = apiService.inputStory(token, file, description, lat, lon)
         response.let {
             if (!it.error) emit(Resource.success(it))
             else emit(Resource.error(it.message))

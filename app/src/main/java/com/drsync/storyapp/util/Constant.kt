@@ -15,7 +15,6 @@ import java.util.*
 
 object Constant {
 
-    const val KEY_USER = "user"
     const val KEY_STORY = "story"
 
     val KEY_USERID = stringPreferencesKey("userId")

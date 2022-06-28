@@ -19,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.StoryApp">
         <activity
-            android:name=".ui.tambahstory.TambahStoryActivity"
+            android:name=".ui.inputstory.InputStoryActivity"
             android:exported="false"
             android:parentActivityName=".ui.main.MainActivity"/>
         <activity

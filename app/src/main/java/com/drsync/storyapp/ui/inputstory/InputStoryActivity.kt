@@ -1,4 +1,4 @@
-package com.drsync.storyapp.ui.tambahstory
+package com.drsync.storyapp.ui.inputstory
 
 import android.Manifest
 import android.content.Intent
@@ -32,7 +32,7 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
 
 @AndroidEntryPoint
-class TambahStoryActivity : AppCompatActivity() {
+class InputStoryActivity : AppCompatActivity() {
 
     companion object {
         private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
@@ -62,7 +62,7 @@ class TambahStoryActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityTambahStoryBinding
-    private val viewModel: TambahStoryViewModel by viewModels()
+    private val viewModel: InputStoryViewModel by viewModels()
     private var user: User? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -116,13 +116,13 @@ class TambahStoryActivity : AppCompatActivity() {
 
             viewModel.tambahStory(token, imageMultipart, desc){
                 if(!it.error){
-                    Toast.makeText(this@TambahStoryActivity, it.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()
                     Intent().apply {
                         setResult(INSERT_RESULT, this)
                         finish()
                     }
                 }else{
-                    Toast.makeText(this@TambahStoryActivity, it.message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -136,7 +136,7 @@ class TambahStoryActivity : AppCompatActivity() {
             return false
         }
         if(getFile == null){
-            Toast.makeText(this@TambahStoryActivity, getString(R.string.choose_photo_first), Toast.LENGTH_SHORT).show()
+            Toast.makeText(this@InputStoryActivity, getString(R.string.choose_photo_first), Toast.LENGTH_SHORT).show()
             return false
         }
         return true
@@ -157,7 +157,7 @@ class TambahStoryActivity : AppCompatActivity() {
 
             Constant.createTempFile(application).also {
                 val photoUri : Uri = FileProvider.getUriForFile(
-                    this@TambahStoryActivity,
+                    this@InputStoryActivity,
                     "com.drsync.storyapp",
                     it
                 )
@@ -178,11 +178,6 @@ class TambahStoryActivity : AppCompatActivity() {
             getFile = myFile
 
             val result =  BitmapFactory.decodeFile(myFile.path)
-            //gunakan bila gambar mengalami perubahan rotasi
-//            val result = rotateBitmap(
-//                BitmapFactory.decodeFile(myFile.path),
-//                true
-//            )
 
             binding.imgStory.setImageBitmap(result)
         }
@@ -193,7 +188,7 @@ class TambahStoryActivity : AppCompatActivity() {
     ) { result ->
         if(result.resultCode == RESULT_OK){
             val selectedImg: Uri = result.data?.data as Uri
-            val myFile = uriToFile(selectedImg, this@TambahStoryActivity)
+            val myFile = uriToFile(selectedImg, this@InputStoryActivity)
             getFile = myFile
 
             binding.imgStory.setImageURI(selectedImg)

@@ -1,4 +1,4 @@
-package com.drsync.storyapp.ui.tambahstory
+package com.drsync.storyapp.ui.inputstory
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -16,7 +16,7 @@ import okhttp3.RequestBody
 import javax.inject.Inject
 
 @HiltViewModel
-class TambahStoryViewModel @Inject constructor(
+class InputStoryViewModel @Inject constructor(
     private val repository : StoryAppRepository,
     private val userPreference: UserPreference
 ) : ViewModel() {
@@ -32,7 +32,7 @@ class TambahStoryViewModel @Inject constructor(
         lon: RequestBody? = null,
         onSuccess : (ServerResponse) -> Unit
     ) = viewModelScope.launch {
-        repository.tambahStory(token, file, description, lat, lon).collect{ response ->
+        repository.inputStory(token, file, description, lat, lon).collect{ response ->
             when(response){
                 is Resource.Loading -> {
                     _isLoading.value = true
