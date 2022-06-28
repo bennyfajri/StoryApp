@@ -28,4 +28,8 @@
     <string name="detail_story">Detail Story</string>
     <string name="f">F</string>
     <string name="choose_photo_first">Pilih story terlebih dahulu</string>
+    <string name="appwidget_text">Story App</string>
+    <string name="add_widget">Tambah wigdet</string>
+    <string name="app_widget_description">ini adalah deskripsi widget</string>
+    <string name="empty_text">Tidak ada data</string>
 </resources>

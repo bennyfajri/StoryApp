@@ -28,4 +28,8 @@
     <string name="detail_story">Detail Story</string>
     <string name="f">F</string>
     <string name="choose_photo_first">Choose story first</string>
+    <string name="appwidget_text">Story App</string>
+    <string name="add_widget">Add widget</string>
+    <string name="app_widget_description">This is an app widget description</string>
+    <string name="empty_text">No Data</string>
 </resources>

@@ -19,6 +19,10 @@ class MainViewModel @Inject constructor(
     private val userPreference: UserPreference
 ) : ViewModel() {
 
+    companion object {
+        var listStory = ArrayList<Story>()
+    }
+
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading : LiveData<Boolean> = _isLoading
 
@@ -38,6 +42,7 @@ class MainViewModel @Inject constructor(
                     _isLoading.value = false
                     if(!response.data.error){
                         onSuccess(response.data.listStory as List<Story>)
+                        listStory = response.data.listStory as ArrayList<Story>
                     }
                 }
                 is Resource.Error -> {
