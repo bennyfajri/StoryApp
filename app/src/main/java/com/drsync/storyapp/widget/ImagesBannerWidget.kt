@@ -10,7 +10,6 @@ import android.widget.RemoteViews
 import android.widget.Toast
 import androidx.core.net.toUri
 import com.drsync.storyapp.R
-import com.drsync.storyapp.ui.main.MainViewModel
 
 
 class ImagesBannerWidget : AppWidgetProvider() {

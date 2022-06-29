@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.paging.ExperimentalPagingApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.drsync.storyapp.R
 import com.drsync.storyapp.databinding.ActivityMainBinding
@@ -40,7 +41,6 @@ class MainActivity : AppCompatActivity() {
             user = it
         }
 
-        getStories()
 
         binding.fabTambah.setOnClickListener {
             Intent(this@MainActivity, InputStoryActivity::class.java).also {
@@ -49,14 +49,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         setupRecyclerData()
+        getStories()
         showLoading()
     }
 
+    @OptIn(ExperimentalPagingApi::class)
     private fun getStories() {
         val token = user?.tokenBearer.toString()
         viewModel.getStories(token) {
             Log.d(TAG, "onCreate: $it")
-            mAdapter.submitList(it)
+            mAdapter.submitData(lifecycle, it)
         }
     }
 
@@ -69,9 +71,13 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerData() {
         mAdapter = MainAdapter()
         binding.rvStory.apply {
-            adapter = mAdapter
             layoutManager = LinearLayoutManager(this@MainActivity)
             setHasFixedSize(true)
+            adapter = mAdapter.withLoadStateFooter(
+                footer = LoadingStateAdapter{
+                    mAdapter.retry()
+                }
+            )
         }
     }
 

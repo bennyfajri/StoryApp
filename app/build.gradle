@@ -70,6 +70,16 @@ dependencies {
     implementation "androidx.datastore:datastore-preferences:1.0.0"
 
     //Glide
-    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    implementation 'com.github.bumptech.glide:glide:4.13.1'
+
+    //Room
+    implementation 'androidx.room:room-ktx:2.5.0-alpha02'
+    kapt 'androidx.room:room-compiler:2.5.0-alpha02'
+
+    //paging 3
+    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
+
+    //Room Paging(Remote mediator)
+    implementation 'androidx.room:room-paging:2.5.0-alpha02'
 
 }

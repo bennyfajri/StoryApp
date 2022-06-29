@@ -9,8 +9,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.drsync.storyapp.R
@@ -21,7 +21,8 @@ import com.drsync.storyapp.util.Constant.KEY_STORY
 import com.drsync.storyapp.util.Constant.createProgress
 import java.util.*
 
-class MainAdapter : ListAdapter<Story, MainAdapter.ViewHolder>(DIFF_CALLBACK) {
+class MainAdapter :
+    PagingDataAdapter<Story, MainAdapter.ViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemStoriesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -29,7 +30,10 @@ class MainAdapter : ListAdapter<Story, MainAdapter.ViewHolder>(DIFF_CALLBACK) {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val data = getItem(position)
+        if(data != null){
+            holder.bind(data)
+        }
     }
 
     inner class ViewHolder(private val binding: ItemStoriesBinding) :
@@ -37,7 +41,7 @@ class MainAdapter : ListAdapter<Story, MainAdapter.ViewHolder>(DIFF_CALLBACK) {
         fun bind(data: Story) {
             binding.apply {
                 val context = itemView.context
-                val firstLetter = data.name?.first().toString()
+                val firstLetter = data.name.first().toString()
                 val date = itemView.context.getString(R.string.created_at,
                     data.createdAt?.split("T")?.get(0) ?: ""
                 )
