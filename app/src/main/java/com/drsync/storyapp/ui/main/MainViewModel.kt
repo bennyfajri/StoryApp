@@ -30,10 +30,9 @@ class MainViewModel @Inject constructor(
     @ExperimentalPagingApi
     fun getStories(
         token: String,
-        location: Int?= null,
         onSuccess: (PagingData<Story>) -> Unit
     ) = viewModelScope.launch {
-        repository.getAllStories(token, location).collect {
+        repository.getAllStories(token).collect {
             onSuccess(it)
         }
     }

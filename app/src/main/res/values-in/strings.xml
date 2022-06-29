@@ -34,4 +34,10 @@
     <string name="empty_text">Tidak ada data</string>
     <string name="retry">Coba lagi</string>
     <string name="change_language">Ganti bahasa</string>
+    <string name="title_activity_user_maps">Lokasi pengguna</string>
+    <string name="marker_in">Marker di %1$s</string>
+    <string name="normal_type">Normal</string>
+    <string name="satellite_type">Satellite</string>
+    <string name="terrain_type">Terrain</string>
+    <string name="hybrid_type">Hybrid</string>
 </resources>

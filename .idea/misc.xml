@@ -5,17 +5,20 @@
       <map>
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1195" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1195" />
+        <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/drawable/ic_location.xml" value="0.2035" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/drawable/ic_login.xml" value="0.1195" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_detail.xml" value="0.264" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_tambah_story.xml" value="0.25" />
+        <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_user_maps.xml" value="0.1578125" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/image_banner_widget.xml" value="0.2" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/item_loading.xml" value="0.2" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/item_stories.xml" value="0.264" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/widget_item.xml" value="0.152" />
-        <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/menu/menu_item.xml" value="0.2" />
+        <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/menu/map_options.xml" value="0.1" />
+        <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/menu/menu_item.xml" value="0.136" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/xml/file_path.xml" value="0.1" />
       </map>
     </option>

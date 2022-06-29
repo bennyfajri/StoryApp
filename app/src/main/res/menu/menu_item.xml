@@ -9,4 +9,9 @@
         android:id="@+id/logout"
         android:title="@string/logout"
         app:showAsAction="never"/>
+    <item
+        android:id="@+id/location"
+        android:title="@string/title_activity_user_maps"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/ic_location"/>
 </menu>

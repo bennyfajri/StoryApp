@@ -17,6 +17,7 @@ import com.drsync.storyapp.databinding.ActivityMainBinding
 import com.drsync.storyapp.models.User
 import com.drsync.storyapp.ui.login.LoginActivity
 import com.drsync.storyapp.ui.inputstory.InputStoryActivity
+import com.drsync.storyapp.ui.userlocation.UserLocationActivity
 import com.drsync.storyapp.util.Constant.TAG
 import com.drsync.storyapp.util.Constant.tokenBearer
 import dagger.hilt.android.AndroidEntryPoint
@@ -98,6 +99,11 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.change_language -> {
                 startActivity(Intent(Settings.ACTION_LOCALE_SETTINGS))
+            }
+            R.id.location -> {
+                Intent(this@MainActivity, UserLocationActivity::class.java).also {
+                    startActivity(it)
+                }
             }
         }
         return true

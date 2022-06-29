@@ -26,8 +26,8 @@ data class Story(
     val createdAt: String? = null,
 
     @field:SerializedName("lat")
-    val lat: String? = null,
+    val lat: Double? = null,
 
     @field:SerializedName("lon")
-    val lon: String? = null
+    val lon: Double? = null
 ) : Parcelable

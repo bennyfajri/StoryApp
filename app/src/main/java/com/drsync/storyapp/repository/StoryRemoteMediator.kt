@@ -14,8 +14,7 @@ import com.drsync.storyapp.models.Story
 class StoryRemoteMediator(
     private val apiService: ApiService,
     private val db: StoryDatabase,
-    private val token: String,
-    private val location: Int? = null
+    private val token: String
 ) : RemoteMediator<Int, Story>() {
 
     companion object {
@@ -52,20 +51,11 @@ class StoryRemoteMediator(
         }
 
         return try {
-            val responseData = if (location == null) {
-                apiService.getAllStories(
-                    token,
-                    page = page,
-                    size = state.config.pageSize
-                ).listStory
-            } else {
-                apiService.getAllStories(
-                    token,
-                    page = page,
-                    size = state.config.pageSize,
-                    location = 1
-                ).listStory
-            }
+            val responseData = apiService.getAllStories(
+                token,
+                page = page,
+                size = state.config.pageSize
+            ).listStory
 
             val endOfPaginationReached = responseData?.isEmpty()
 
