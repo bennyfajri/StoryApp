@@ -40,4 +40,7 @@
     <string name="satellite_type">Satellite</string>
     <string name="terrain_type">Terrain</string>
     <string name="hybrid_type">Hybrid</string>
+    <string name="location">Lokasi (Opsional)</string>
+    <string name="permission_denied">Tidak mendapatkan permission</string>
+    <string name="location_not_found">Lokasi tidak ditemukan, coba lagi</string>
 </resources>

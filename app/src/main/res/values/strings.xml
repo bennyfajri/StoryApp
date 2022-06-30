@@ -40,4 +40,7 @@
     <string name="satellite_type">Satellite</string>
     <string name="terrain_type">Terrain</string>
     <string name="hybrid_type">Hybrid</string>
+    <string name="location">Location (Optional)</string>
+    <string name="permission_denied">Permission not granted</string>
+    <string name="location_not_found">Location is not found. Try Again</string>
 </resources>

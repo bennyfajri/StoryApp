@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1195" />
+        <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/drawable/ic_add_location.xml" value="0.2555" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1195" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/drawable/ic_location.xml" value="0.2035" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/drawable/ic_login.xml" value="0.1195" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_detail.xml" value="0.264" />
+        <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_input_story.xml" value="0.1" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/App/Android/DicodingIntermediate/StoryApp/app/src/main/res/layout/activity_register.xml" value="0.264" />

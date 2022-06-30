@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.BitmapFactory
+import android.location.Location
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -17,13 +18,16 @@ import androidx.core.content.FileProvider
 import androidx.core.view.isVisible
 import androidx.core.widget.doAfterTextChanged
 import com.drsync.storyapp.R
-import com.drsync.storyapp.databinding.ActivityTambahStoryBinding
+import com.drsync.storyapp.databinding.ActivityInputStoryBinding
 import com.drsync.storyapp.models.User
 import com.drsync.storyapp.ui.main.MainActivity.Companion.INSERT_RESULT
 import com.drsync.storyapp.util.Constant
 import com.drsync.storyapp.util.Constant.reduceFileImage
 import com.drsync.storyapp.util.Constant.tokenBearer
 import com.drsync.storyapp.util.Constant.uriToFile
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.model.LatLng
 import dagger.hilt.android.AndroidEntryPoint
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -50,7 +54,7 @@ class InputStoryActivity : AppCompatActivity() {
             if (!allPermissionsGranted()) {
                 Toast.makeText(
                     this,
-                    "Tidak mendapatkan permission.",
+                    getString(R.string.permission_denied),
                     Toast.LENGTH_SHORT
                 ).show()
                 finish()
@@ -62,13 +66,15 @@ class InputStoryActivity : AppCompatActivity() {
         ContextCompat.checkSelfPermission(baseContext, it) == PackageManager.PERMISSION_GRANTED
     }
 
-    private lateinit var binding: ActivityTambahStoryBinding
+    private lateinit var binding: ActivityInputStoryBinding
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
     private val viewModel: InputStoryViewModel by viewModels()
     private var user: User? = null
+    private var location: Location? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTambahStoryBinding.inflate(layoutInflater)
+        binding = ActivityInputStoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         if (!allPermissionsGranted()) {
@@ -83,14 +89,70 @@ class InputStoryActivity : AppCompatActivity() {
             user = it
         }
 
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
         binding.apply {
             btnCamera.setOnClickListener { startTakePhoto() }
             btnGallery.setOnClickListener { startGallery() }
             btnUpload.setOnClickListener { uploadImage() }
+            icSearchLocation.setOnClickListener { getMyLastLocation() }
         }
 
         showLoading()
         clearErrorDescription()
+    }
+
+    private val requestPermissionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.RequestMultiplePermissions()
+        ) { permissions ->
+            when {
+                permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
+                    getMyLastLocation()
+                }
+                permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
+                    getMyLastLocation()
+                }
+                else -> {}
+            }
+        }
+
+    private fun setLocationEditText(location: Location) {
+        val latLng = "${location.latitude}, ${location.longitude}"
+        this.location = location
+        binding.etLocation.setText(latLng)
+    }
+
+    private fun checkPermission(permission: String): Boolean {
+        return ContextCompat.checkSelfPermission(
+            this,
+            permission
+        ) == PackageManager.PERMISSION_GRANTED
+    }
+
+    private fun getMyLastLocation() {
+        if (checkPermission(Manifest.permission.ACCESS_FINE_LOCATION) &&
+            checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION)
+        ) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                if (location != null) {
+                    setLocationEditText(location)
+                } else {
+                    Toast.makeText(
+                        this@InputStoryActivity,
+                        R.string.location_not_found,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+            }
+        } else {
+            requestPermissionLauncher.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
+        }
     }
 
     private fun clearErrorDescription() {
@@ -113,6 +175,8 @@ class InputStoryActivity : AppCompatActivity() {
 
             val token = user?.tokenBearer.toString()
             val desc = description.toRequestBody("text/plain".toMediaType())
+            val lat = if(location != null) location?.latitude.toString().toRequestBody("text/plain". toMediaType()) else null
+            val lon = if(location != null) location?.longitude.toString().toRequestBody("text/plain". toMediaType()) else null
             val imageFile = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",
@@ -120,7 +184,13 @@ class InputStoryActivity : AppCompatActivity() {
                 imageFile
             )
 
-            viewModel.tambahStory(token, imageMultipart, desc){
+            viewModel.tambahStory(
+                token = token,
+                file = imageMultipart,
+                description = desc,
+                lat = lat,
+                lon = lon
+            ){
                 if(!it.error){
                     Toast.makeText(this@InputStoryActivity, it.message, Toast.LENGTH_SHORT).show()
                     Intent().apply {
