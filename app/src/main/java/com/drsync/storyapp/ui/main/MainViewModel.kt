@@ -20,10 +20,6 @@ class MainViewModel @Inject constructor(
     private val userPreference: UserPreference
 ) : ViewModel() {
 
-    companion object {
-        var listStory = ArrayList<Story>()
-    }
-
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading : LiveData<Boolean> = _isLoading
 

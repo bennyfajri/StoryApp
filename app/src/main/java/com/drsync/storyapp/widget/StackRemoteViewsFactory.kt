@@ -17,14 +17,14 @@ class StackRemoteViewsFactory(
 ) : RemoteViewsService.RemoteViewsFactory {
 
     private val mWidgetItems = ArrayList<Bitmap>()
-    private val listStory = MainViewModel.listStory
+    private val listStory = listOf<String>()
 
     override fun onDataSetChanged() {
         repeat(listStory.size) {
             Log.d(TAG, "onDataSetChanged: $it")
             val bitmap = Glide.with(mContext)
                 .asBitmap()
-                .load(listStory[it].photoUrl)
+                .load(listStory[it])
                 .submit()
                 .get()
             mWidgetItems.add(bitmap)
